@@ -1,10 +1,11 @@
 # This is my README
 ## Dependencies:
-php version > 5.1
-php-cli
-php-posix
-php-pcntl
-/etc/init.d/functions should exist
+* php version > 5.1
+* php-cli
+* php-posix
+* php-pcntl
+* /etc/init.d/functions should exist
+* It only supports RedHat based servers.
 
 ## Installation
 * `cd /usr/local/`
@@ -15,14 +16,19 @@ php-pcntl
 * `cp support-files/laberp-equipment-server.ini /etc/.`
 	* Edit the ini file to setup all of the servers you wish to run
 * Add /usr/local/laberp-equipment-server/bin to $PATH
-	* Add `PATH="$PATH:/usr/local/laberp-equipment-server/bin` to your .bash_profile or environment config"
-* `cp support-files/scaleserver to /etc/init.d/`
-	* You might have to chmod +x scaleserver to execute it. 
+	* Add `PATH="$PATH:/usr/local/laberp-equipment-server/bin` to your .bash_profile or environment config
+* `cp support-files/scaleserver to /etc/init.d/` 
 * Now we can start the server!
 	* `/sbin/service scaleserver start`
 	* `/sbin/service scaleserver stop`
 	* `/sbin/service scaleserver restart`
 	* `/sbin/service scaleserver status`
+
+## How does this work?
+* scaleserver is a daemon that launches the php socket server "laberp-socket-server"
+* laberp-socket-server then forks a process for each scale defined in the ini configuration
+* Each process listens for data from a scale
+* When it receives data it sends that information back to each client that is connected to it. 
 
 ## Front end
 front.html is an example file on how to create a web socket connection
