@@ -6,19 +6,22 @@ php-posix
 php-pcntl
 /etc/init.d/functions should exist
 
-cd /usr/local/
-tar -zcvf laberp-equipment-server.tar.gz 
-cd laberp-equipment-server
-
-## To be ran on a redhat based server
-cp support-files/scaleserver to /etc/init.d/
-chmod +x scaleserver
-
-to run:
-service scaleserver start
-service scaleserver stop
-service scaleserver restart
-service scaleserver status
+## Installation
+* cd /usr/local/
+* wget <url to laberp-equipment-server.tar.gz>
+* tar -zcvf laberp-equipment-server-$hash.tar.gz
+** If the directory that is uncompressed is not called "laberp-equipment-server" then you will have to rename it:
+** mv $untarred_directory laberp-equipment-server
+* cd laberp-equipment-server
+* Add /usr/local/laberp-equipment-server/bin to $PATH
+** Add {{{PATH="$PATH:/usr/local/laberp-equipment-server/bin}}} to your .bash_profile or environment config"
+* cp support-files/scaleserver to /etc/init.d/
+** You might have to chmod +x scaleserver to execute it. 
+* Now we can start the server!
+** /sbin/service scaleserver start
+** /sbin/service scaleserver stop
+** /sbin/service scaleserver restart
+** /sbin/service scaleserver status
 
 ## Front end
 front.html is an example file on how to create a web socket connection

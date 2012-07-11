@@ -15,7 +15,7 @@
 log=/var/log/socket_server.log
  
 #verify that the executable exists
-test -x /var/www/vhosts/laberp/html/services/socket-server || exit 0 RETVAL=0 
+test -x /usr/local/laberp-equipment-server/bin/socket-server || exit 0 RETVAL=0 
  
 #
 #	Set prog, proc and bin variables.
