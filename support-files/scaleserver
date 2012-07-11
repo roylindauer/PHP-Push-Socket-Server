@@ -22,7 +22,7 @@ test -x /var/www/vhosts/laberp/html/services/socket-server || exit 0 RETVAL=0
 #
 prog="scaleserver"
 proc=/var/lock/subsys/socket_server_php
-bin=/var/www/vhosts/laberp/html/services/socket-server
+bin=/usr/local/laberp-equipment-server/bin/socket-server
  
 start() {
 	# Check if Daemon is already running

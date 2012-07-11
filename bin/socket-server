@@ -16,7 +16,7 @@ require_once 'libs/Server.class.php';
 require_once 'libs/Client.class.php';
 require_once 'libs/Logger.class.php';
 
-$log = '/var/log/socket_server.log';
+$log = '/var/log/laberp_equipment_server.log';
 
 include 'libs/config.php';
 

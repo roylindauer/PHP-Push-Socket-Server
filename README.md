@@ -6,19 +6,19 @@ php-posix
 php-pcntl
 /etc/init.d/functions should exist
 
+cd /usr/local/
+tar -zcvf laberp-equipment-server.tar.gz 
+cd laberp-equipment-server
+
 ## To be ran on a redhat based server
-put scaleserver in /etc/init.d/
-chmod a+x scaleserver
+cp support-files/scaleserver to /etc/init.d/
+chmod +x scaleserver
 
 to run:
-scaleserver start
-scaleserver stop
-scaleserver restart
-scaleserver status
-
-## socket-server and supporting libraries
-put socket-server and libs under /var/www/vhosts/laberp/html/services
-chmod a+x socket-server
+service scaleserver start
+service scaleserver stop
+service scaleserver restart
+service scaleserver status
 
 ## Front end
 front.html is an example file on how to create a web socket connection
@@ -29,7 +29,6 @@ We will have a driver for each piece of equipment we want to talk to.
 Define all of the servers you wish to connect to on libs/config.php
 
 Each server is a scale
-
 
 ## Resources
 * https://github.com/srchea/PHP-Push-WebSocket
