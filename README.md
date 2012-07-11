@@ -7,11 +7,11 @@ php-pcntl
 /etc/init.d/functions should exist
 
 ## Installation
-* cd /usr/local/
-* wget <url to laberp-equipment-server.tar.gz>
-* tar -zcvf laberp-equipment-server-$hash.tar.gz
+* `cd /usr/local/`
+* `wget <url to laberp-equipment-server.tar.gz>`
+* `tar -zcvf laberp-equipment-server-$hash.tar.gz`
 	* `ln -s laberp-equipment-server-$hash laberp-equipment-server`
-* cd laberp-equipment-server
+* `cd laberp-equipment-server`
 * `cp support-files/laberp-equipment-server.ini /etc/.`
 	* Edit the ini file to setup all of the servers you wish to run
 * Add /usr/local/laberp-equipment-server/bin to $PATH
