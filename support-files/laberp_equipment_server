@@ -1,28 +1,28 @@
 #!/bin/bash
 #
-#	/etc/init.d/socket_server
+#	/etc/init.d/laberp-equipment-server
 #
-# Starts the at daemon
+# Starts the laberp-equipment-server daemon
 #
 # chkconfig: 345 95 5
-# description: Run the PHP Socket Server for communicating with FX-3001 scale
-# processname: socket_server
+# description: Run the PHP Socket Server for communicating with scales
+# processname: laberp-equipment-server
  
 # Source function library.
 . /etc/init.d/functions
  
 #startup values
-log=/var/log/laberp_socket_server.log
+log=/var/log/laberp-equipment-server.log
  
 #verify that the executable exists
-test -x /usr/local/laberp-equipment-server/bin/laberp-socket-server || exit 0 RETVAL=0 
+test -x /usr/local/laberp-equipment-server/bin/laberp-equipment-server || exit 0 RETVAL=0 
  
 #
 #	Set prog, proc and bin variables.
 #
-prog="scaleserver"
-proc=/var/lock/subsys/laberp_socket_server_php
-bin=/usr/local/laberp-equipment-server/bin/laberp-socket-server
+prog="laberp_equipment_server"
+proc=/var/lock/subsys/laberp_equipment_server_php
+bin=/usr/local/laberp-equipment-server/bin/laberp-equipment-server
  
 start() {
 	# Check if Daemon is already running
