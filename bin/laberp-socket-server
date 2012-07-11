@@ -6,7 +6,6 @@
  * @author Lab Analytix <http://labanalytix.com>
  * @version 0.1
  */
-
 date_default_timezone_set('America/Los_Angeles');
 error_reporting(E_ALL);
 
@@ -14,41 +13,45 @@ set_time_limit(0);
 
 $exec_dir = '/usr/local/laberp-equipment-server';
 
-require_once $exec_dir.'/libs/Server.class.php';
-require_once $exec_dir.'/libs/Client.class.php';
-require_once $exec_dir.'/libs/Logger.class.php';
+require_once $exec_dir . '/libs/Server.class.php';
+require_once $exec_dir . '/libs/Client.class.php';
+require_once $exec_dir . '/libs/Logger.class.php';
 
 $log = '/var/log/laberp_equipment_server.log';
 
-include $exec_dir.'/libs/config.php';
+include $exec_dir . '/libs/config.php';
 
 // Display usage information.
-function displayUsage(){
+function displayUsage()
+{
 	global $log;
-    echo "\n";
-    echo "Socket Server Daemon.\n";
-    echo "\n";
-    echo "Usage:\n";
-    echo "\tsocket_server [options]\n";
-    echo "\n";
-    echo "\toptions:\n";
-    echo "\t\t--help display this help message\n";
-    echo "\t\t--log=<filename> The location of the log file (default '".$log."')\n";
-    echo "\n";
+	echo "\n";
+	echo "Socket Server Daemon.\n";
+	echo "\n";
+	echo "Usage:\n";
+	echo "\tsocket_server [options]\n";
+	echo "\n";
+	echo "\toptions:\n";
+	echo "\t\t--help display this help message\n";
+	echo "\t\t--log=<filename> The location of the log file (default '" . $log . "')\n";
+	echo "\n";
 }
 
 // Configure command line arguments
-if($argc > 0){
-    foreach($argv as $arg){
-        $args = explode('=',$arg);
-        switch($args[0]){
-            case '--help':
-                return displayUsage();
-            case '--log':
-                $log = $args[1];
-                break;
-        }
-    }
+if ($argc > 0)
+{
+	foreach ($argv as $arg)
+	{
+		$args = explode('=', $arg);
+		switch ($args[0])
+		{
+			case '--help':
+				return displayUsage();
+			case '--log':
+				$log = $args[1];
+				break;
+		}
+	}
 }
 
 $Log = new Logger($log, 4);
@@ -71,23 +74,28 @@ $total_servers = count($servers);
 
 //fork a process for each server
 $pids = array();
-for ($i=0; $i<$total_servers; $i++) {
+for ($i = 0; $i < $total_servers; $i++)
+{
 	$pid = pcntl_fork();
 	$pids[] = $pid;
 	// could not fork
-	if($pid == -1){
+	if ($pid == -1)
+	{
 		file_put_contents(LOGFILE, "Error: could not daemonize process.\n", FILE_APPEND);
 		$Log->write_log('error', 'Could not daemonize process.');
 		continue;
-	// this is the parent
-	}else if ($pid){
+		// this is the parent
+	}
+	else if ($pid)
+	{
 		pcntl_wait($status, WNOHANG); //protect against zombie children, one wait vs one child 
-	// this is the child
-	}else if ($pid===0){
+		// this is the child
+	}
+	else if ($pid === 0)
+	{
 		$Log->write_log('info', "starting up server::{$i}.");
 		$Server = new Server($servers[$i]);
-		$Server->run();	
+		$Server->run();
 		die();
-	}	
-
+	}
 }
