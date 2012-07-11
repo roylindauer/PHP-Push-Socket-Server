@@ -6,32 +6,7 @@
  * @version 0.1
  */
 
-/* Configuration ************************************************************/
-
-$servers[0] = array(
-	'address' => '192.168.1.14', 			// ip address of socket server to create, typically the ip of the server this is run on
-	'port' => 5001, 						// port of socket server to create
-	'verboseMode' => true, 					// verbose mode.. true for loud, false for quiet
-	'equipment_driver'=>'AD_fx300i.php', 	// equipment program to load
-	'equipment_host'=>'192.168.1.144', 		// ip address of equipment to read from (192.168.1.144 for dev; 208.85.204.122 for staging with scale at Lab Analytix
-	'equipment_port' => 20023, 				// port of equipment to read from
-);
-$servers[1] = array(
-	'address' => '192.168.1.14',
-	'port' => 5002,
-	'verboseMode' => true,
-	'equipment_driver'=>'AD_fx300i.php',
-	'equipment_host'=>'192.168.1.144',
-	'equipment_port' => 20024,
-);
-$servers[2] = array(
-	'address' => '192.168.1.14',
-	'port' => 5003,
-	'verboseMode' => true,
-	'equipment_driver'=>'AD_fx300i.php',
-	'equipment_host'=>'192.168.1.144',
-	'equipment_port' => 20025,
-);
+$servers = parse_ini_file("/etc/laberp-equipment-server.ini", true);
 
 /* Common Functions *********************************************************/
 
