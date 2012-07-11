@@ -14,7 +14,7 @@ php-pcntl
 	* mv $untarred_directory laberp-equipment-server
 * cd laberp-equipment-server
 * Add /usr/local/laberp-equipment-server/bin to $PATH
-	* Add {{{PATH="$PATH:/usr/local/laberp-equipment-server/bin}}} to your .bash_profile or environment config"
+	* Add `PATH="$PATH:/usr/local/laberp-equipment-server/bin` to your .bash_profile or environment config"
 * cp support-files/scaleserver to /etc/init.d/
 	* You might have to chmod +x scaleserver to execute it. 
 * Now we can start the server!
