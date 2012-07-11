@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 
 set_time_limit(0);
 
-$exec_dir = dirname(__FILE__);
+$exec_dir = realpath(dirname(__FILE__) . '../');
 
 require_once $exec_dir.'/libs/Server.class.php';
 require_once $exec_dir.'/libs/Client.class.php';
