@@ -12,7 +12,10 @@ php-pcntl
 * tar -zcvf laberp-equipment-server-$hash.tar.gz
 	* If the directory that is uncompressed is not called "laberp-equipment-server" then you will have to rename it:
 	* mv $untarred_directory laberp-equipment-server
+	* Or just symlink to laberp-equipment-server
 * cd laberp-equipment-server
+* vi libs/config.php
+	* The IP address of each server should be the internal IP address of the machine this will run on
 * Add /usr/local/laberp-equipment-server/bin to $PATH
 	* Add `PATH="$PATH:/usr/local/laberp-equipment-server/bin` to your .bash_profile or environment config"
 * cp support-files/scaleserver to /etc/init.d/
