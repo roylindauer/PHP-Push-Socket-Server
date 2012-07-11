@@ -14,8 +14,8 @@ php-pcntl
 	* mv $untarred_directory laberp-equipment-server
 	* Or just symlink to laberp-equipment-server
 * cd laberp-equipment-server
-* vi libs/config.php
-	* The IP address of each server should be the internal IP address of the machine this will run on
+* cp support-files/laberp-equipment-server.ini /etc/.
+	* Edit the ini file to setup all of the servers you wish to run
 * Add /usr/local/laberp-equipment-server/bin to $PATH
 	* Add `PATH="$PATH:/usr/local/laberp-equipment-server/bin` to your .bash_profile or environment config"
 * cp support-files/scaleserver to /etc/init.d/
