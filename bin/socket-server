@@ -12,13 +12,15 @@ error_reporting(E_ALL);
 
 set_time_limit(0);
 
-require_once 'libs/Server.class.php';
-require_once 'libs/Client.class.php';
-require_once 'libs/Logger.class.php';
+$exec_dir = dirname(__FILE__);
+
+require_once $exec_dir.'/libs/Server.class.php';
+require_once $exec_dir.'/libs/Client.class.php';
+require_once $exec_dir.'/libs/Logger.class.php';
 
 $log = '/var/log/laberp_equipment_server.log';
 
-include 'libs/config.php';
+include $exec_dir.'/libs/config.php';
 
 // Display usage information.
 function displayUsage(){
