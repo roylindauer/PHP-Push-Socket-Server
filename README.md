@@ -25,10 +25,11 @@
 	* `/sbin/service laberp_equipment_server status`
 
 ## How does this work?
-* laberp_equipment_server is a daemon that launches the php socket server "laberp-equipment-server"
+* laberp_equipment_server is a script that launches the php socket server "laberp-equipment-server"
 * laberp-equipment-server then forks a process for each scale defined in the ini configuration
-* Each process listens for data from a scale
-* When it receives data it sends that information back to each client that is connected to it. 
+	* It creates n forks of itself (1 child process for each scale defined in the configuration)
+* Each child process listens for data from a scale
+* When it receives data it sends that information back to the client that is connected to it. 
 
 ## Front end
 front.html is an example file on how to create a web socket connection

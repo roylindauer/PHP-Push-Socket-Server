@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#	/etc/init.d/laberp-equipment-server
+#	/etc/init.d/laberp_equipment_server
 #
 # Starts the laberp-equipment-server daemon
 #
 # chkconfig: 345 95 5
 # description: Run the PHP Socket Server for communicating with scales
-# processname: laberp-equipment-server
+# processname: laberp_equipment_server_php
  
 # Source function library.
 . /etc/init.d/functions
